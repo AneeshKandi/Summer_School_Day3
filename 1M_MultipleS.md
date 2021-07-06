@@ -11,10 +11,10 @@ Demonstrating the use of multiple slaves with one master connected by I2C. Imagi
 ```
 #include <Wire.h>
 
+#include <Wire.h>
 int LED = 11;
-
 bool presence;
-byte light;
+int light;
 
 void setup()
 {
@@ -28,7 +28,10 @@ void loop()
 
   if (Wire.available())
   {
-    presence = (Wire.read() == '1') ? true : false;
+    if(Wire.read() == 1)
+      presence = true; 
+    else
+      presence = false;
   }
   
   Wire.requestFrom(2, 1);
@@ -38,7 +41,7 @@ void loop()
     light = Wire.read();
   }
   
-  if ( presence && light < 100 ) 
+  if ( presence && light < 60 ) 
   {
     digitalWrite(LED, HIGH);
     delay(5000);
@@ -54,7 +57,7 @@ void loop()
 ```
 #include <Wire.h>
 
-volatile byte pir;
+int pir;
 
 void setup()
 {
@@ -64,7 +67,10 @@ void setup()
 
 void loop()
 {
-  pir = (digitalRead(10) == HIGH) ? '1' : '0';
+  if(digitalRead(10) == HIGH)
+    pir = 1;
+  else
+    pir = 0;
   delay(1);
 }
 void reqEvt()
@@ -77,17 +83,19 @@ void reqEvt()
 ```
 #include <Wire.h>
 
-volatile byte ldr;
+int ldr;
 
 void setup()
 { 
+  Serial.begin(9600);
   Wire.begin(2);
   Wire.onRequest(reqEvt); 
 }
 
 void loop()
 {
-  ldr = map(analogRead(A0), 0, 1023, 0, 255);
+  ldr = map(analogRead(A0), 0, 1023, 0, 100);
+  Serial.println(ldr);
   delay(10);
 }
 void reqEvt()
