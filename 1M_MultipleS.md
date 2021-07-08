@@ -11,7 +11,6 @@ Demonstrating the use of multiple slaves with one master connected by I2C. Imagi
 ```
 #include <Wire.h>
 
-#include <Wire.h>
 int LED = 11;
 bool presence;
 int light;
