@@ -4,7 +4,7 @@ Demonstrating the use of multiple slaves with one master connected by I2C. Imagi
 
 ## Schematics
 
-![image](https://user-images.githubusercontent.com/85028192/124980159-a9c27b80-e051-11eb-98a6-34bd5bc1e9ac.png)
+![image](https://user-images.githubusercontent.com/85028192/125013520-96330700-e089-11eb-9af3-b42d3a4c7851.png)
 
 ## Master Code
 
@@ -104,4 +104,4 @@ void reqEvt()
 ```
 ## Tinkercad Simulation
 
-Here you go :   https://www.tinkercad.com/things/c6lTgTJ2dPo 
+Here you go : https://www.tinkercad.com/things/6hgoay3AC3L 
