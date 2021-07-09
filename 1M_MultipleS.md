@@ -93,7 +93,7 @@ void setup()
 
 void loop()
 {
-  ldr = map(analogRead(A0), 0, 1023, 0, 100);
+  ldr = map(analogRead(A0), 0, 1023, 0, 255);
   Serial.println(ldr);
   delay(10);
 }
